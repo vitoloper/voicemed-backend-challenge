@@ -1,0 +1,34 @@
+{
+  "name": "voicemed-backend-challenge",
+  "version": "0.1.0",
+  "description": "Voicemed backend challenge",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint .",
+    "nodemon": "npx nodemon server.js | npx pino-pretty"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitoloper/voicemed-backend-challenge.git"
+  },
+  "author": "GV",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vitoloper/voicemed-backend-challenge/issues"
+  },
+  "homepage": "https://github.com/vitoloper/voicemed-backend-challenge#readme",
+  "dependencies": {
+    "fastify": "^3.27.4",
+    "fastify-swagger": "^5.0.0",
+    "mongoose": "^6.2.8"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "eslint": "^8.11.0",
+    "mocha": "^9.2.2",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  }
+}
