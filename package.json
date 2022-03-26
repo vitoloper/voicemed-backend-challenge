@@ -8,6 +8,7 @@
     "test": "NODE_ENV=test npx mocha --exit",
     "unittest": "NODE_ENV=test npx mocha --exit \"./test/unit.*.js\"",
     "inttest": "NODE_ENV=test npx mocha --exit \"./test/integration.*.js\"",
+    "coverage": "NODE_ENV=test npx nyc mocha --exit",
     "lint": "npx eslint .",
     "nodemon": "npx nodemon server.js | npx pino-pretty"
   },
@@ -32,6 +33,7 @@
     "eslint": "^8.11.0",
     "mocha": "^9.2.2",
     "nodemon": "^2.0.15",
+    "nyc": "^15.1.0",
     "sinon": "^13.0.1",
     "supertest": "^6.2.2"
   }
