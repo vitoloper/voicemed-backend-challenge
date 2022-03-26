@@ -11,6 +11,8 @@ const statusController = require('../controllers/status.controller');
  */
 async function routes(fastify) {
     fastify.get('/status', statusController.getDbConnStatus);
+
+    fastify.head('/status', statusController.getDbConnStatus);
 }
 
 module.exports = routes;
