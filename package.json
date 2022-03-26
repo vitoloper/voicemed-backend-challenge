@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "NODE_ENV=test npx mocha --exit",
+    "unittest": "NODE_ENV=test npx mocha --exit \"./test/unit.*.js\"",
+    "inttest": "NODE_ENV=test npx mocha --exit \"./test/integration.*.js\"",
     "lint": "npx eslint .",
     "nodemon": "npx nodemon server.js | npx pino-pretty"
   },
