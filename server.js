@@ -3,7 +3,7 @@
 // Load configuration
 const config = require('./config');
 
-// Mongoose
+// Load mongoose dependency
 const mongoose = require('mongoose');
 
 // Create a fastify instance
@@ -11,7 +11,8 @@ const fastify = require('fastify')({ logger: config.app.enableLogging });
 
 fastify.log.info(`Environment configuration: ${config.env}`);
 
-// TODO: register routes here
+// Register routes
+fastify.register(require('./routes/status.routes'));
 
 // Setup db connection and start server
 (async () => {
