@@ -16,15 +16,13 @@ fastify.log.info(`Environment configuration: ${config.env}`);
 // Setup db connection and start server
 (async () => {
     try {
-        const dbUrl = `mongodb://${config.db.host}:${config.db.port}/${config.db.name}`;
-
         // Set mongoose connection 'connected' event listener
         mongoose.connection.on('connected', () => {
-            fastify.log.info(`Connected to database at ${dbUrl}`);
+            fastify.log.info(`Connected to database at ${config.db.uri}`);
         });
 
         // Connect to the database
-        await mongoose.connect(dbUrl, config.db.options);
+        await mongoose.connect(config.db.uri, config.db.options);
 
         // Set mongoose connection 'error' event listener
         mongoose.connection.on('error', (mongoError) => {
@@ -33,7 +31,7 @@ fastify.log.info(`Environment configuration: ${config.env}`);
 
         // Set mongoose connection 'disconnected' event listener
         mongoose.connection.on('disconnected', () => {
-            fastify.log.error(`Disconnected from database at ${dbUrl}`);
+            fastify.log.error(`Disconnected from database at ${config.db.uri}`);
         });
 
         // Listen for incoming requests

@@ -17,9 +17,7 @@ const development = {
         enableLogging: true
     },
     db: {
-        host: process.env.DEV_DB_HOST || 'localhost',
-        port: parseInt(process.env.DEV_DB_PORT) || 27017,
-        name: process.env.DEV_DB_NAME || 'voicemed-challenge-dev',
+        uri: process.env.DEV_DB_URI || 'mongodb://localhost:27017/voicemed-challenge-dev',
         options: {}
     }
 };
@@ -33,9 +31,7 @@ const production = {
         enableLogging: true
     },
     db: {
-        host: process.env.PROD_DB_HOST || 'localhost',
-        port: parseInt(process.env.PROD_DB_PORT) || 27017,
-        name: process.env.PROD_DB_NAME || 'voicemed-challenge-prod',
+        uri: process.env.PROD_DB_URI || 'mongodb://localhost:27017/voicemed-challenge-prod',
         options: {}
     }
 };
@@ -49,9 +45,7 @@ const test = {
         enableLogging: false
     },
     db: {
-        host: process.env.TEST_DB_HOST || 'localhost',
-        port: parseInt(process.env.TEST_DB_PORT) || 27017,
-        name: process.env.TEST_DB_NAME || 'voicemed-challenge-test',
+        uri: process.env.TEST_DB_URI || 'mongodb://localhost:27017/voicemed-challenge-test',
         options: {}
     }
 };
