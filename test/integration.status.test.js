@@ -12,6 +12,11 @@ describe('Status Integration', function () {
         await fastify.ready();
     });
 
+    after(async function () {
+        // Wait for server to close
+        await fastify.close();
+    });
+
     describe('GET /status', function () {
         it('should return {"database": "healthy"} and status code 200 when db connection is healthy', async function () {
             const response = await supertest(fastify.server)
