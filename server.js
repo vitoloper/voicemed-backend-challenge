@@ -23,10 +23,20 @@ fastify.log.info(`Environment configuration: ${config.env}`);
             fastify.log.info(`Connected to database at ${dbUrl}`);
         });
 
+        // Connect to the database
         await mongoose.connect(dbUrl, config.db.options);
 
-        // TODO: listen for mongoose events
+        // Set mongoose connection 'error' event listener
+        mongoose.connection.on('error', (mongoError) => {
+            fastify.log.error(mongoError);
+        });
 
+        // Set mongoose connection 'disconnected' event listener
+        mongoose.connection.on('disconnected', () => {
+            fastify.log.error(`Disconnected from database at ${dbUrl}`);
+        });
+
+        // Listen for incoming requests
         fastify.log.info('Starting server...');
         await fastify.listen(config.app.port, config.app.host);
     } catch (err) {
