@@ -18,7 +18,9 @@ const development = {
     },
     db: {
         uri: process.env.DEV_DB_URI || 'mongodb://localhost:27017/voicemed-challenge-dev',
-        options: {}
+        options: {
+            serverSelectionTimeoutMS: 5000 // Keep trying to send operations for 5 seconds
+        }
     }
 };
 
@@ -32,7 +34,9 @@ const production = {
     },
     db: {
         uri: process.env.PROD_DB_URI || 'mongodb://localhost:27017/voicemed-challenge-prod',
-        options: {}
+        options: {
+            serverSelectionTimeoutMS: 5000 // Keep trying to send operations for 5 seconds
+        }
     }
 };
 
@@ -46,7 +50,9 @@ const test = {
     },
     db: {
         uri: process.env.TEST_DB_URI || 'mongodb://localhost:27017/voicemed-challenge-test',
-        options: {}
+        options: {
+            serverSelectionTimeoutMS: 5000 // Keep trying to send operations for 5 seconds
+        }
     }
 };
 
