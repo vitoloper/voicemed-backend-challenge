@@ -1,10 +1,12 @@
+const packageVersion = require('../package.json').version;
+
 module.exports = {
     routePrefix: '/docs',
     openapi: {
         info: {
             title: 'Voicemed backend challenge API',
             description: 'API description for the backend recruitment task.',
-            version: '0.1.0'
+            version: packageVersion
         },
         servers: [
 

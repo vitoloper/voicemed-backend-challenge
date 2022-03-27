@@ -4,7 +4,23 @@
 
 const getStatus = {
     description: 'Get database connection status',
-    tags: ['db']
+    tags: ['db'],
+    response: {
+        200: {
+            description: 'Database connection is healthy',
+            type: 'object',
+            properties: {
+                database: { type: 'string' }
+            }
+        },
+        503: {
+            description: 'Database connection is not healthy',
+            type: 'object',
+            properties: {
+                database: { type: 'string' }
+            }
+        }
+    }
 };
 
 const headStatus = {
