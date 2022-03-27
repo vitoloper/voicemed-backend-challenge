@@ -14,6 +14,7 @@ server.log.info(`Environment configuration: ${config.env}`);
         // Listen for incoming requests
         server.log.info('Starting server...');
         await server.listen(config.app.port, config.app.host);
+        server.swagger();
     } catch (err) {
         server.log.error(err)
         process.exit(1)
