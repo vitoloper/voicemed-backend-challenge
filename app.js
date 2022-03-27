@@ -28,6 +28,7 @@ function buildFastify(opts = {}) {
 
     // Register routes
     app.register(require('./routes/v1/status.routes'), { prefix: '/api/v1' });
+    app.register(require('./routes/v1/games.routes'), { prefix: '/api/v1' });
 
     return app;
 }
