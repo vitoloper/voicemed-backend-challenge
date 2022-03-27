@@ -11,7 +11,7 @@ const statusService = require('../services/status.service');
  * @param {object} reply - server reply
  * @returns {object} Response body sent to client
  */
-const getDbConnStatus = async (request, reply) => {
+const getDbConnStatus_v1 = async (request, reply) => {
 
     let isConnHealthy = await statusService.getDbConnStatus();
 
@@ -25,5 +25,5 @@ const getDbConnStatus = async (request, reply) => {
 }
 
 module.exports = {
-    getDbConnStatus
+    getDbConnStatus_v1
 };

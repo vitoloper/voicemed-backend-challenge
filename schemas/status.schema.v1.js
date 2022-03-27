@@ -1,3 +1,5 @@
+// Status routes schemas
+
 const getStatus = {
     description: 'Get database connection status',
     tags: ['db']

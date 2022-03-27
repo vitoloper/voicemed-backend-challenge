@@ -27,7 +27,7 @@ describe('Status Controller', function () {
             // Make the stub return a promise which resolves to the provided value
             getDbConnStatusStub.resolves(true);
 
-            let result = await statusController.getDbConnStatus(request, reply);
+            let result = await statusController.getDbConnStatus_v1(request, reply);
             expect(result).to.be.an('object');
             expect(result).to.have.a.property('database').to.equal('healthy');
         });
@@ -39,7 +39,7 @@ describe('Status Controller', function () {
             // Make the stub return a promise which resolves to the provided value
             getDbConnStatusStub.resolves(false);
 
-            let result = await statusController.getDbConnStatus(request, reply);
+            let result = await statusController.getDbConnStatus_v1(request, reply);
             expect(result).to.be.an('object');
             expect(result).to.have.a.property('database').to.equal('unhealthy');
             expect(reply.statusCode).to.equal(503);
