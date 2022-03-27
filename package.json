@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "NODE_ENV=test npx mocha --exit",
+    "test": "npm run unittest; npm run inttest",
     "unittest": "NODE_ENV=test npx mocha --exit \"./test/unit.*.js\"",
     "inttest": "NODE_ENV=test npx mocha --exit \"./test/integration.*.js\"",
     "coverage": "NODE_ENV=test npx nyc mocha --exit",
