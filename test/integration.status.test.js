@@ -3,10 +3,13 @@
 // Module dependencies
 const expect = require('chai').expect;
 const supertest = require('supertest');
-const fastify = require('../server');
+const buildFastify = require('../app');
 const mongoose = require('mongoose');
 
 describe('Status Integration', function () {
+    // Build a fastify instance
+    const fastify = buildFastify();
+
     before(async function () {
         // Wait for db connection and server listening
         await fastify.ready();
