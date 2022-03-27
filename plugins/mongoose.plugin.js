@@ -9,6 +9,11 @@ const mongoose = require('mongoose');
  * @param {function} done - function called when plugin is ready
  */
 module.exports = async function (fastify, options, done) {
+    // Close db connection on server close
+    fastify.addHook('onClose', async () => {
+        await mongoose.disconnect();
+    })
+
     // Set mongoose connection 'connected' event listener
     mongoose.connection.on('connected', () => {
         fastify.log.info(`Connected to database at ${options.dbconfig.uri}`);
