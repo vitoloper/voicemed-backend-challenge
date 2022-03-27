@@ -27,7 +27,7 @@ function buildFastify(opts = {}) {
     app.register(require('fastify-swagger'), require('./swagger/swagger.config.js'));
 
     // Register routes
-    app.register(require('./routes/status.routes'));
+    app.register(require('./routes/v1/status.routes'), { prefix: '/api/v1' });
 
     return app;
 }

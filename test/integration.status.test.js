@@ -20,10 +20,10 @@ describe('Status Integration', function () {
         await fastify.close();
     });
 
-    describe('GET /status', function () {
+    describe('GET /api/v1/status', function () {
         it('should return {"database": "healthy"} and status code 200 when db connection is healthy', async function () {
             const response = await supertest(fastify.server)
-                .get('/status')
+                .get('/api/v1/status')
                 .expect(200);
 
             expect(response.body).to.have.a.property('database').to.equal('healthy');
@@ -35,7 +35,7 @@ describe('Status Integration', function () {
             await mongoose.disconnect();
 
             const response = await supertest(fastify.server)
-                .get('/status')
+                .get('/api/v1/status')
                 .expect(503);
 
             expect(response.body).to.have.a.property('database').to.equal('unhealthy');

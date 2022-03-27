@@ -3,8 +3,8 @@
 'use strict';
 
 // Module dependencies
-const statusController = require('../controllers/status.controller');
-const statusSchema = require('../schemas/status.schema');
+const statusController = require('../../controllers/status.controller');
+const statusSchema = require('../../schemas/status.schema.v1');
 
 /**
  * @description Routes definition function
