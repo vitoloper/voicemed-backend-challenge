@@ -1,5 +1,7 @@
 // Status routes schemas
 
+'use strict';
+
 const getStatus = {
     description: 'Get database connection status',
     tags: ['db']

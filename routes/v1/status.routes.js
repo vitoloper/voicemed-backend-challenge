@@ -4,7 +4,7 @@
 
 // Module dependencies
 const statusController = require('../../controllers/status.controller');
-const statusSchema_v1 = require('../../schemas/status.schema.v1');
+const statusSchema_v1 = require('../../schemas/v1/status.schema');
 
 /**
  * @description Routes definition function
