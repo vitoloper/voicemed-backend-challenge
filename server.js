@@ -17,6 +17,9 @@ fastify.register(require('./plugins/mongoose.plugin'), { dbconfig: config.db })
         }
     });
 
+// Register fastify-swagger (OpenAPI documentation)
+fastify.register(require('fastify-swagger'), require('./swagger/swagger.config.js'));
+
 // Register routes
 fastify.register(require('./routes/status.routes'));
 
