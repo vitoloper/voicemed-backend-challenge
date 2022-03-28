@@ -14,7 +14,8 @@ const gamesService = require('../services/games.service');
  * @returns {Promise<object>} Saved game
  */
 const saveGame_v1 = async (request) => {
-    let result = await gamesService.saveGame(request.body);
+    /** @const {object} */
+    const result = await gamesService.saveGame(request.body);
     return result;
 }
 

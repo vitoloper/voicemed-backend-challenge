@@ -17,11 +17,10 @@ const saveGame = async (game) => {
     // See https://mongoosejs.com/docs/faq.html#unique-doesnt-work
     await Game.init();
 
-    // Create a new game using model
+    /** @const {object} */
     const newGame = new Game(game);
 
-    // Save game in the database
-    // const savedGame = await newGame.save();
+    /** @const {object} */
     const savedGame = await newGame.save();
 
     return savedGame;

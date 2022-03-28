@@ -1,9 +1,15 @@
 'use strict';
 
-// Load configuration
+/**
+ * Load configuration
+ * @const {object}
+ */
 const config = require('./config');
 
-// Create server
+/**
+ * Create server
+ * @const {object}
+ */
 const server = require('./app')({ logger: config.app.enableLogging });
 
 server.log.info(`Environment configuration: ${config.env}`);

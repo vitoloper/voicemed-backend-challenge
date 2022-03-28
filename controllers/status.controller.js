@@ -14,8 +14,8 @@ const statusService = require('../services/status.service');
  * @returns {Promise<object>} Response body sent to client
  */
 const getDbConnStatus_v1 = async (request, reply) => {
-
-    let isConnHealthy = await statusService.getDbConnStatus();
+    /** @const {boolean} */
+    const isConnHealthy = await statusService.getDbConnStatus();
 
     if (isConnHealthy) {
         return { database: 'healthy' };

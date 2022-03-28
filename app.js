@@ -3,7 +3,10 @@
 // Module dependencies
 const fastify = require('fastify');
 
-// Load configuration
+/**
+ * Load configuration
+ * @const {object}
+ */
 const config = require('./config');
 
 /**
@@ -13,6 +16,7 @@ const config = require('./config');
  * @returns {object} Fastify instance
  */
 function buildFastify(opts = {}) {
+    /** @const {object} */
     const app = fastify(opts);
 
     // Register custom fastify mongoose plugin
