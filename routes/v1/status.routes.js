@@ -1,4 +1,7 @@
-// Status routes
+/**
+ * @description Status routes
+ * @module routes/v1/status
+ */
 
 'use strict';
 

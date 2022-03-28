@@ -1,3 +1,8 @@
+/**
+ * @description Main application module
+ * @module app
+ */
+
 'use strict';
 
 // Module dependencies

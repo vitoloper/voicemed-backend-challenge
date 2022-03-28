@@ -1,4 +1,7 @@
-// Games controller
+/**
+ * @description Games controller
+ * @module controllers/games
+ */
 
 'use strict';
 

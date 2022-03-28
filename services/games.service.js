@@ -1,4 +1,7 @@
-// Games service
+/**
+ * @description Games service
+ * @module services/games
+ */
 
 'use strict';
 

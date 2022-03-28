@@ -1,4 +1,7 @@
-// Games routes
+/**
+ * @description Games routes
+ * @module routes/v1/games
+ */
 
 'use strict';
 

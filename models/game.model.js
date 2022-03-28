@@ -1,4 +1,7 @@
-// Game mongoose model
+/**
+ * @description Game mongoose model
+ * @module models/game
+ */
 
 'use strict';
 

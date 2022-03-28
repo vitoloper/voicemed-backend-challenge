@@ -1,4 +1,7 @@
-// Games routes schemas
+/**
+ * @description Game routes schemas
+ * @module schemas/v1/games
+ */
 
 'use strict';
 

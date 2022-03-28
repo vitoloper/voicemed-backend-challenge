@@ -1,4 +1,7 @@
-// Status controller
+/**
+ * @description Status controller
+ * @module controllers/status
+ */
 
 'use strict';
 

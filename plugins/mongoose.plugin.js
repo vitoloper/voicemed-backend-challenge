@@ -1,3 +1,9 @@
+/**
+ * @description Fastify mongoose connection initialization plugin
+ * @module plugins/mongoose
+ */
+
+
 'use strict';
 
 const mongoose = require('mongoose');

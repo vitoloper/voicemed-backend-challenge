@@ -1,4 +1,7 @@
-// Status service
+/**
+ * @description Status service
+ * @module services/status
+ */
 
 'use strict';
 
