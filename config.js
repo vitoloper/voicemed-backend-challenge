@@ -1,4 +1,7 @@
-// Environment configuration file
+/**
+ * @description Environment configuration file
+ * @module config
+ */
 
 'use strict';
 

@@ -1,4 +1,7 @@
-// Status routes schemas
+/**
+ * @description Status routes schemas
+ * @module schemas/v1/status
+ */
 
 'use strict';
 

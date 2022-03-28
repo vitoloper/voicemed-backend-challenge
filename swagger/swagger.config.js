@@ -1,3 +1,14 @@
+/**
+ * @description Swagger configuration
+ * @module swagger/config
+ */
+
+'use strict';
+
+/**
+ * @description Application version number
+ * @const {string}
+ */
 const packageVersion = require('../package.json').version;
 
 module.exports = {

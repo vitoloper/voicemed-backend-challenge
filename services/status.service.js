@@ -1,4 +1,7 @@
-// Status service
+/**
+ * @description Status service
+ * @module services/status
+ */
 
 'use strict';
 
@@ -6,8 +9,10 @@
 const helpers = require('../helpers/status.helpers.js');
 
 /**
+ * @async
+ * @function getDbConnStatus
  * @description Get database connection status
- * @returns {boolean} Connection is healthy or not
+ * @returns {Promise<boolean>} Connection is healthy or not
  */
 const getDbConnStatus = async () => {
     if (helpers.getMongooseConnReadyState() === 1) {

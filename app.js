@@ -1,17 +1,27 @@
+/**
+ * @description Main application module
+ * @module app
+ */
+
 'use strict';
 
 // Module dependencies
 const fastify = require('fastify');
 
-// Load configuration
+/**
+ * Load configuration
+ * @const {object}
+ */
 const config = require('./config');
 
 /**
- * @description Fastify instance builder
+ * @function buildFastify
+ * @description Fastify instance builder.
  * @param {object} opts - options
  * @returns {object} Fastify instance
  */
 function buildFastify(opts = {}) {
+    /** @const {object} */
     const app = fastify(opts);
 
     // Register custom fastify mongoose plugin

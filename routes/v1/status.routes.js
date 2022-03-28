@@ -1,4 +1,7 @@
-// Status routes
+/**
+ * @description Status routes
+ * @module routes/v1/status
+ */
 
 'use strict';
 
@@ -7,6 +10,8 @@ const statusController = require('../../controllers/status.controller');
 const statusSchema_v1 = require('../../schemas/v1/status.schema');
 
 /**
+ * @async
+ * @function routes
  * @description Routes definition function
  * @param {object} fastify - Fastify instance
  */

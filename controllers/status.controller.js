@@ -1,4 +1,7 @@
-// Status controller
+/**
+ * @description Status controller
+ * @module controllers/status
+ */
 
 'use strict';
 
@@ -6,14 +9,16 @@
 const statusService = require('../services/status.service');
 
 /**
- * @description Get database connection status
+ * @async
+ * @function getDbConnStatus_v1
+ * @description Get database connection status.
  * @param {object} request - incoming request
  * @param {object} reply - server reply
- * @returns {object} Response body sent to client
+ * @returns {Promise<object>} Response body sent to client
  */
 const getDbConnStatus_v1 = async (request, reply) => {
-
-    let isConnHealthy = await statusService.getDbConnStatus();
+    /** @const {boolean} */
+    const isConnHealthy = await statusService.getDbConnStatus();
 
     if (isConnHealthy) {
         return { database: 'healthy' };
