@@ -9,15 +9,18 @@ const gamesService = require('../services/games.service');
 
 describe('Games Controller', function () {
     let saveGameStub;
+    let bestValueGamesStub;
 
     beforeEach(function () {
-        // Service function stub
+        // Service functions stub
         saveGameStub = sinon.stub(gamesService, 'saveGame');
+        bestValueGamesStub = sinon.stub(gamesService, 'bestValueGames');
     });
 
     afterEach(function () {
         // Restore the original function
         saveGameStub.restore();
+        bestValueGamesStub.restore();
     });
 
     describe('#saveGame_v1', function () {
@@ -39,9 +42,7 @@ describe('Games Controller', function () {
             expect(result).to.be.an('object');
             expect(result).to.deep.equal(request.body);
         });
-    });
 
-    describe('#saveGame_v1', function () {
         it('should reject with an error when gamesService.saveGame rejects with an error', async function () {
             const request = {
                 body: {
@@ -60,4 +61,60 @@ describe('Games Controller', function () {
         });
     });
 
+    describe('#bestValueGames_v1', function () {
+        it('should return the best value games that fit into a pen-drive', async function () {
+            const request = { query: { pen_drive_space: 1073741824 } };
+            const reply = {};
+            const serviceResult = {
+                "games": [
+                    {
+                        "name": "Super Game",
+                        "price": 71.7,
+                        "space": 1073741824
+                    },
+                    {
+                        "name": "Extra Game",
+                        "price": 100.78,
+                        "space": 2147483648
+                    }
+                ],
+                "total_space": 3221225472, // total space of games
+                "remaining_space": 1024 // empty space on the pen-drive after download
+            };
+
+            // Make the stub return a promise which resolves to the value provided
+            bestValueGamesStub.resolves(serviceResult);
+
+            const result = await gamesController.bestValueGames_v1(request, reply);
+
+            expect(result).to.be.an('object');
+            expect(result).to.deep.equal(serviceResult);
+        });
+
+        it('should reject with an error when gamesService.bestValueGames rejects with an error', async function () {
+            const request = { query: { pen_drive_space: 1073741824 } };
+            const reply = {};
+            const serviceResult = {
+                "games": [
+                    {
+                        "name": "Super Game",
+                        "price": 71.7,
+                        "space": 1073741824
+                    },
+                    {
+                        "name": "Extra Game",
+                        "price": 100.78,
+                        "space": 2147483648
+                    }
+                ],
+                "total_space": 3221225472, // total space of games
+                "remaining_space": 1024 // empty space on the pen-drive after download
+            };
+
+            // Make promise reject
+            bestValueGamesStub.rejects();
+
+            await assert.rejects(gamesController.bestValueGames_v1(request, reply));
+        });
+    });
 });
