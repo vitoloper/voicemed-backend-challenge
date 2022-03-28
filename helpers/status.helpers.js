@@ -6,7 +6,8 @@
 const mongoose = require('mongoose');
 
 /**
- * @description Wrapper function which returns mongoose.connection.readyState
+ * @function getMongooseConnReadyState
+ * @description Wrapper function which returns mongoose.connection.readyState.
  * @returns {number} mongoose connection state
  */
 const getMongooseConnReadyState = () => {

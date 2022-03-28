@@ -7,6 +7,8 @@ const statusController = require('../../controllers/status.controller');
 const statusSchema_v1 = require('../../schemas/v1/status.schema');
 
 /**
+ * @async
+ * @function routes
  * @description Routes definition function
  * @param {object} fastify - Fastify instance
  */

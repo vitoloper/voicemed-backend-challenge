@@ -6,9 +6,11 @@
 const Game = require('../models/game.model');
 
 /**
+ * @async
+ * @function savedGame
  * @description Save a new game in the database
  * @param {object} game - game to save
- * @returns {object} Saved game
+ * @returns {Promise<object>} Saved game
  */
 const saveGame = async (game) => {
     // Ensure index building has been completed

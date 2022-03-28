@@ -7,6 +7,8 @@ const gamesController = require('../../controllers/games.controller');
 const gamesSchema_v1 = require('../../schemas/v1/games.schema');
 
 /**
+ * @async
+ * @function routes
  * @description Routes definition function
  * @param {object} fastify - Fastify instance
  */

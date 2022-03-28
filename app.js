@@ -7,7 +7,8 @@ const fastify = require('fastify');
 const config = require('./config');
 
 /**
- * @description Fastify instance builder
+ * @function buildFastify
+ * @description Fastify instance builder.
  * @param {object} opts - options
  * @returns {object} Fastify instance
  */

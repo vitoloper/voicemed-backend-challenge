@@ -3,7 +3,9 @@
 const mongoose = require('mongoose');
 
 /**
- * @description Mongoose setup plugin
+ * @async
+ * @function
+ * @description Setup mongoose connection and event listeners.
  * @param {object} fastify - fastify instance
  * @param {object} options - options
  * @param {function} done - function called when plugin is ready

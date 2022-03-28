@@ -6,10 +6,12 @@
 const gamesService = require('../services/games.service');
 
 /**
- * @description Save a new game
+ * @async
+ * @function saveGame_v1
+ * @description Save a new game.
  * @param {object} request - incoming request
  * @param {object} reply - server reply
- * @returns {object} Saved game
+ * @returns {Promise<object>} Saved game
  */
 const saveGame_v1 = async (request) => {
     let result = await gamesService.saveGame(request.body);
