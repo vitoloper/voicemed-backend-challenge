@@ -5,6 +5,10 @@
 
 'use strict';
 
+/**
+ * POST /api/v1/games schema
+ * @const {object}
+ */
 const postGames = {
     description: 'Save a new game',
     tags: ['game'],
@@ -30,6 +34,44 @@ const postGames = {
     }
 };
 
+/**
+ * POST /api/v1/best_value_games schema
+ * @const {object}
+ */
+const postBestValueGames = {
+    description: 'Return a combination with the highest possible total value that fits given pen-drive space',
+    tags: ['game'],
+    querystring: {
+        type: 'object',
+        required: ['pen_drive_space'],
+        properties: {
+            pen_drive_space: { type: 'integer', minimum: 1 }
+        }
+    },
+    response: {
+        200: {
+            description: 'Success',
+            type: 'object',
+            properties: {
+                games: {
+                    type: 'array',
+                    items: {
+                        type: 'object',
+                        properties: {
+                            name: { type: 'string' },
+                            price: { type: 'number' },
+                            space: { type: 'integer' }
+                        }
+                    }
+                },
+                total_space: { type: 'integer' },
+                remaining_space: { type: 'integer' }
+            }
+        }
+    }
+};
+
 module.exports = {
-    postGames
+    postGames,
+    postBestValueGames
 };

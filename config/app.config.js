@@ -24,6 +24,13 @@ const development = {
         options: {
             serverSelectionTimeoutMS: 5000 // Keep trying to send operations for 5 seconds
         }
+    },
+    redis: {
+        host: '127.0.0.1',
+        port: 6379
+    },
+    bull: {
+        jobQueueName: 'job-queue-dev'
     }
 };
 
@@ -40,6 +47,13 @@ const production = {
         options: {
             serverSelectionTimeoutMS: 5000 // Keep trying to send operations for 5 seconds
         }
+    },
+    redis: {
+        host: '127.0.0.1',
+        port: 6379
+    },
+    bull: {
+        jobQueueName: 'job-queue-prod'
     }
 };
 
@@ -56,6 +70,13 @@ const test = {
         options: {
             serverSelectionTimeoutMS: 5000 // Keep trying to send operations for 5 seconds
         }
+    },
+    redis: {
+        host: '127.0.0.1',
+        port: 6379
+    },
+    bull: {
+        jobQueueName: 'job-queue-test'
     }
 };
 

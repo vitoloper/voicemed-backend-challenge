@@ -33,6 +33,9 @@ function buildFastify(opts = {}) {
             }
         });
 
+    // Register custom fastify bull plugin
+    app.register(require('./plugins/bull.plugin'), { bull: config.bull, redis: config.redis });
+
     // Register fastify-swagger plugin (OpenAPI documentation)
     app.register(require('fastify-swagger'), require('./config/swagger.config.js'));
 

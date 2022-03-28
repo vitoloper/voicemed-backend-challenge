@@ -1,6 +1,6 @@
 {
   "name": "voicemed-backend-challenge",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Voicemed backend challenge",
   "main": "server.js",
   "scripts": {
