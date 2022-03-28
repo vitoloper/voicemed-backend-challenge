@@ -1,3 +1,8 @@
+/**
+ * @description Server
+ * @module server
+ */
+
 'use strict';
 
 /**
