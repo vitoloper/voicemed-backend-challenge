@@ -7,6 +7,7 @@
 
 // Module dependencies
 const Game = require('../models/game.model');
+const JobQueue = require('../helpers/bull.singleton.job.helper');
 
 /**
  * @async
@@ -29,6 +30,32 @@ const saveGame = async (game) => {
     return savedGame;
 }
 
+/**
+ * @async
+ * @function bestValueGames
+ * @description Send a job to a worker and return a combination with the highest possible total value that fits given pen-drive space.
+ * @param {number} penDriveSpace 
+ * @returns {object[]} Array of games
+ */
+const bestValueGames = async (penDriveSpace) => {
+    const jobQueue = new JobQueue().getInstance();
+
+    /**
+     * Add job to queue
+     * @const {object}
+     */
+    const job = await jobQueue.add({ pen_drive_space: penDriveSpace });
+
+    /**
+     * Returns a promise that resolves or rejects when the job completes or fails
+     * @const {Promise<object>}
+     */
+    const result = await job.finished();
+
+    return result;
+}
+
 module.exports = {
-    saveGame
+    saveGame,
+    bestValueGames
 };
