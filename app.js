@@ -12,7 +12,7 @@ const fastify = require('fastify');
  * Load configuration
  * @const {object}
  */
-const config = require('./config');
+const config = require('./config/app.config');
 
 /**
  * @function buildFastify
@@ -34,7 +34,7 @@ function buildFastify(opts = {}) {
         });
 
     // Register fastify-swagger plugin (OpenAPI documentation)
-    app.register(require('fastify-swagger'), require('./swagger/swagger.config.js'));
+    app.register(require('fastify-swagger'), require('./config/swagger.config.js'));
 
     // Register routes
     app.register(require('./routes/v1/status.routes'), { prefix: '/api/v1' });

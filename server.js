@@ -9,7 +9,7 @@
  * Load configuration
  * @const {object}
  */
-const config = require('./config');
+const config = require('./config/app.config');
 
 /**
  * Create server
