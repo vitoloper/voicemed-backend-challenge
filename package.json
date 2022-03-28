@@ -11,7 +11,7 @@
     "coverage": "NODE_ENV=test npx nyc mocha --exit",
     "lint": "npx eslint .",
     "nodemon": "npx nodemon server.js | npx pino-pretty",
-    "docs": "npx jsdoc -c ./.jsdoc.conf.json ."
+    "docs": "npx jsdoc --readme README.md -c ./.jsdoc.conf.json ."
   },
   "repository": {
     "type": "git",
