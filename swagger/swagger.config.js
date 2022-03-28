@@ -1,6 +1,6 @@
 /**
  * @description Swagger configuration
- * @module swagger/swagger
+ * @module swagger/config
  */
 
 'use strict';
