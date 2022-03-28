@@ -1,6 +1,6 @@
 /**
- * @description Environment configuration file
- * @module config
+ * @description Environment-based application configuration file
+ * @module config/app
  */
 
 'use strict';
