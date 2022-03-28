@@ -19,7 +19,7 @@ describe('Status Controller', function () {
         getDbConnStatusStub.restore();
     });
 
-    describe('#getDbConnStatus', function () {
+    describe('#getDbConnStatus_v1', function () {
         it('should return {"database": "healthy"} and status code 200 when db connection is healthy', async function () {
             let request = {};
             let reply = { statusCode: 200 };
