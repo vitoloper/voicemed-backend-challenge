@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/vitoloper/voicemed-backend-challenge#readme",
   "dependencies": {
+    "bull": "^4.8.1",
     "dotenv": "^16.0.0",
     "fastify": "^3.27.4",
     "fastify-swagger": "^5.1.0",
