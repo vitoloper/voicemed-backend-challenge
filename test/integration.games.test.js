@@ -217,5 +217,11 @@ describe('Games Integration', function () {
             expect(response.headers['content-type']).to.match(/json/);
             expect(response.statusCode).to.equal(400);
         });
-    });
+    }); // describe('POST /api/v1/games' ...)
+
+    describe('POST /api/v1/best_value_games', function () {
+        it('something', async function () {
+
+        });
+    }); // describe('POST /api/v1/best_value_games', ...)
 });
