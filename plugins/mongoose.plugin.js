@@ -27,9 +27,6 @@ module.exports = async function (fastify, options, done) {
         fastify.log.info(`Connected to database at ${options.dbconfig.uri}`);
     });
 
-    // Connect to the database
-    await mongoose.connect(options.dbconfig.uri, options.dbconfig.options);
-
     // Set mongoose connection 'error' event listener
     mongoose.connection.on('error', (mongoError) => {
         fastify.log.error(mongoError);
@@ -39,6 +36,9 @@ module.exports = async function (fastify, options, done) {
     mongoose.connection.on('disconnected', () => {
         fastify.log.error(`Disconnected from database at ${options.dbconfig.uri}`);
     });
+
+    // Connect to the database
+    await mongoose.connect(options.dbconfig.uri, options.dbconfig.options);
 
     done();
 };
