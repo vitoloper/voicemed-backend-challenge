@@ -28,9 +28,6 @@ describe('Status Service', function () {
             expect(result).to.equal(true);
         });
 
-    });
-
-    describe('#getDbConnStatus', function () {
         it('should return false when db connection is unhealthy', async function () {
             // Make the stub return the provided value
             connReadyStateStub.returns(0);
