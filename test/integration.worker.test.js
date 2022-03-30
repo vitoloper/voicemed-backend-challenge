@@ -5,7 +5,7 @@
 'use strict';
 
 // Module dependencies
-const { spawn, spawnSync } = require('child_process');
+const { spawn } = require('child_process');
 const Queue = require('bull');
 const expect = require('chai').expect;
 var assert = require('assert');

@@ -1,11 +1,11 @@
 {
   "name": "voicemed-backend-challenge",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Voicemed backend challenge",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "npm run unittest; npm run inttest",
+    "test": "NODE_ENV=test npx mocha --exit",
     "unittest": "NODE_ENV=test npx mocha --exit \"./test/unit.*.js\"",
     "inttest": "NODE_ENV=test npx mocha --exit \"./test/integration.*.js\"",
     "coverage": "NODE_ENV=test npx nyc mocha --exit",
