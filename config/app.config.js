@@ -26,8 +26,8 @@ const development = {
         }
     },
     redis: {
-        host: '127.0.0.1',
-        port: 6379
+        host: process.env.DEV_REDIS_HOST || '127.0.0.1',
+        port: process.env.DEV_REDIS_PORT || 6379
     },
     bull: {
         jobQueueName: 'job-queue-dev'
@@ -49,8 +49,8 @@ const production = {
         }
     },
     redis: {
-        host: '127.0.0.1',
-        port: 6379
+        host: process.env.PROD_REDIS_HOST || '127.0.0.1',
+        port: process.env.PROD_REDIS_PORT || 6379
     },
     bull: {
         jobQueueName: 'job-queue-prod'
@@ -72,8 +72,8 @@ const test = {
         }
     },
     redis: {
-        host: '127.0.0.1',
-        port: 6379
+        host: process.env.TEST_REDIS_HOST || '127.0.0.1',
+        port: process.env.TEST_REDIS_PORT || 6379
     },
     bull: {
         jobQueueName: 'job-queue-test'
