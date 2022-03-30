@@ -1,0 +1,31 @@
+# Production docker compose file
+
+services:
+  mongodb:
+    image: "mongo:5.0.6"
+  redis:
+    image: "redis:6.2.6-alpine"
+  app:
+    build:
+      context: .
+      dockerfile: app.prod.Dockerfile
+    depends_on:
+      - mongodb
+      - redis
+    ports:
+      - "3000:3000"
+  worker:
+    build:
+      context: .
+      dockerfile: worker.prod.Dockerfile
+    depends_on:
+      - mongodb
+      - redis
+      - app
+    deploy:
+      mode: replicated
+      replicas: 4
+
+networks:
+  default:
+    driver: bridge
