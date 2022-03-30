@@ -18,7 +18,7 @@ console.info(`Environment configuration: ${config.env}`);
  * Job queue
  * @const {object}
  */
-const jobQueue = new Queue(config.bull.jobQueueName, { redis: config.redis });
+const jobQueue = new Queue(config.bull.jobQueueName, config.redis.uri);
 
 // Set 'error' event listener
 jobQueue.on('error', (err) => {

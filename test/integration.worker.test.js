@@ -35,7 +35,7 @@ describe('Worker Integration', function () {
         await mongoose.connect(config.db.uri, config.db.options);
 
         // Connect to queue
-        jobQueue = new Queue(config.bull.jobQueueName, { redis: config.redis });
+        jobQueue = new Queue(config.bull.jobQueueName, config.redis.uri);
 
         // Test data to write on the database
         // Datasets P01
@@ -118,7 +118,7 @@ describe('Worker Integration', function () {
         it('should return the optimal selection of items', async function () {
             // Increase mocha.js timeout just to be safe
             this.timeout(5000);
-            
+
             /** @const {number} */
             const penDriveSpace = 165;
 

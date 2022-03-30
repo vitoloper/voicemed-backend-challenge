@@ -16,7 +16,7 @@ const JobQueue = require('../helpers/bull.singleton.job.helper');
  * @param {function} done - function called when plugin is ready
  */
 module.exports = async function (fastify, options, done) {
-    const jobQueue = new JobQueue(options.bull.jobQueueName, { redis: options.redis }).getInstance();
+    const jobQueue = new JobQueue(options.bull.jobQueueName, options.redis.uri).getInstance();
 
     // Set 'error' event listener
     jobQueue.on('error', (err) => {
