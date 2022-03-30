@@ -1,4 +1,3 @@
-// Status helper functions
 /**
  * @description Status helper
  * @module helpers/status

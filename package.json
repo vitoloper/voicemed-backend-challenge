@@ -1,11 +1,11 @@
 {
   "name": "voicemed-backend-challenge",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Voicemed backend challenge",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "npm run unittest; npm run inttest",
+    "test": "NODE_ENV=test npx mocha --exit",
     "unittest": "NODE_ENV=test npx mocha --exit \"./test/unit.*.js\"",
     "inttest": "NODE_ENV=test npx mocha --exit \"./test/integration.*.js\"",
     "coverage": "NODE_ENV=test npx nyc mocha --exit",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/vitoloper/voicemed-backend-challenge#readme",
   "dependencies": {
+    "bull": "^4.8.1",
     "dotenv": "^16.0.0",
     "fastify": "^3.27.4",
     "fastify-swagger": "^5.1.0",
@@ -36,6 +37,7 @@
     "mocha": "^9.2.2",
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
+    "proxyquire": "^2.1.3",
     "sinon": "^13.0.1",
     "supertest": "^6.2.2"
   }
