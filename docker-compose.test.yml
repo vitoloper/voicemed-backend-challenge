@@ -8,7 +8,7 @@ services:
   worker_test:
     build:
       context: .
-      dockerfile: worker.test.Dockerfile
+      dockerfile: worker.Dockerfile
     depends_on:
       - mongodb
       - redis
@@ -19,7 +19,7 @@ services:
   app_test:
     build:
       context: .
-      dockerfile: app.test.Dockerfile
+      dockerfile: app.Dockerfile
     depends_on:
       - mongodb
       - redis
