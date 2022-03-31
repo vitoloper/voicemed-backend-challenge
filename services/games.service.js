@@ -6,8 +6,10 @@
 'use strict';
 
 // Module dependencies
+var mongoose = require('mongoose');
 const Game = require('../models/game.model');
 const JobQueue = require('../helpers/bull.singleton.job.helper');
+const BestValueResult = require('../models/best-value-result.model');
 
 /**
  * @async
@@ -50,7 +52,13 @@ const bestValueGames = async (penDriveSpace) => {
      * Returns a promise that resolves or rejects when the job completes or fails
      * @const {Promise<object>}
      */
-    const result = await job.finished();
+    const bestValueResultId = await job.finished();
+
+    /**
+     * Get the computed response which has been saved by the worker
+     * @const {object}
+     */
+    const result = BestValueResult.findById(mongoose.Types.ObjectId(bestValueResultId)).lean();
 
     return result;
 }

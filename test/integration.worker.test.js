@@ -11,6 +11,7 @@ const expect = require('chai').expect;
 var assert = require('assert');
 const mongoose = require('mongoose');
 const Game = require('../models/game.model');
+const BestValueResult = require('../models/best-value-result.model');
 
 // Load configuration
 const config = require('../config/app.config');
@@ -101,6 +102,9 @@ describe('Worker Integration', function () {
         // Remove all documents in the collection
         await Game.deleteMany({});
 
+        // Remove all completed job results
+        await BestValueResult.deleteMany({});
+
         // Disconnect from database
         await mongoose.disconnect();
 
@@ -115,7 +119,7 @@ describe('Worker Integration', function () {
     // Write some test data on to db in games collection
     describe('Handle incoming jobs', function () {
 
-        it('should return the optimal selection of items', async function () {
+        it('should save the result in the database and return the saved document id', async function () {
             // Increase mocha.js timeout just to be safe
             this.timeout(5000);
 
@@ -126,7 +130,16 @@ describe('Worker Integration', function () {
             const job = await jobQueue.add({ pen_drive_space: penDriveSpace });
 
             // Get job result
-            const result = await job.finished();
+            const jobResult = await job.finished();
+
+            /** @const {string} - mongoose object id */
+            const bestValueResultId = jobResult.id;
+
+            // Check that id property is a string
+            expect(bestValueResultId).to.be.a('string');
+
+            // Get best value result from database
+            const result = await BestValueResult.findById(mongoose.Types.ObjectId(bestValueResultId)).lean();
 
             /** @const {object[]} */
             const games = result.games;
