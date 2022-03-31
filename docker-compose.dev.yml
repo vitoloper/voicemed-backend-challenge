@@ -1,4 +1,4 @@
-# Unit & integration tests docker compose file
+# Development docker compose file
 
 services:
   mongodb:
