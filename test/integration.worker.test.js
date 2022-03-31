@@ -29,8 +29,10 @@ describe('Worker Integration', function () {
     let jobQueue;
 
     before(async function () {
-        // Create worker
-        worker = spawn('node', ['./worker/worker.js']);
+        // Create worker if not in a containerized environment
+        if (process.env.RUNNING_IN_CONTAINER !== 'true') {
+            worker = spawn('node', ['./worker/worker.js']);
+        }
 
         // Connect to database
         await mongoose.connect(config.db.uri, config.db.options);
@@ -111,8 +113,10 @@ describe('Worker Integration', function () {
         // Close queue
         await jobQueue.close();
 
-        // Terminate worker process
-        worker.kill('SIGTERM');
+        // Terminate worker process if not in a containerized environment
+        if (process.env.RUNNING_IN_CONTAINER !== 'true') {
+            worker.kill('SIGTERM');
+        }
     });
 
 
