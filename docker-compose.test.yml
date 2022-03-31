@@ -1,28 +1,25 @@
-# Production docker compose file
+# Unit & integration tests docker compose file
 
 services:
   mongodb:
     image: "mongo:5.0.6"
   redis:
     image: "redis:6.2.6-alpine"
-  worker:
+  worker_test:
     build:
       context: .
-      dockerfile: worker.prod.Dockerfile
+      dockerfile: worker.test.Dockerfile
     depends_on:
       - mongodb
       - redis
-    deploy:
-      mode: replicated
-      replicas: 2
-  app:
+  app_test:
     build:
       context: .
-      dockerfile: app.prod.Dockerfile
+      dockerfile: app.test.Dockerfile
     depends_on:
       - mongodb
       - redis
-      - worker
+      - worker_test
     ports:
       - "3000:3000"
 
