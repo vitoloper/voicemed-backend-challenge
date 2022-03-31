@@ -5,26 +5,34 @@ services:
     image: "mongo:5.0.6"
   redis:
     image: "redis:6.2.6-alpine"
-  worker:
+  worker_prod:
     build:
       context: .
-      dockerfile: worker.prod.Dockerfile
+      dockerfile: worker.Dockerfile
     depends_on:
       - mongodb
       - redis
     deploy:
       mode: replicated
       replicas: 2
-  app:
+    environment:
+      - NODE_ENV=production
+      - PROD_DB_URI=mongodb://mongodb:27017/voicemed-challenge-prod
+      - PROD_REDIS_URI=redis://redis:6379/2
+  app_prod:
     build:
       context: .
-      dockerfile: app.prod.Dockerfile
+      dockerfile: app.Dockerfile
     depends_on:
       - mongodb
       - redis
-      - worker
+      - worker_prod
     ports:
       - "3000:3000"
+    environment:
+    - NODE_ENV=production
+    - PROD_DB_URI=mongodb://mongodb:27017/voicemed-challenge-prod
+    - PROD_REDIS_URI=redis://redis:6379/2
 
 networks:
   default:
