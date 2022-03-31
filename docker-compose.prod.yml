@@ -30,9 +30,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-    - NODE_ENV=production
-    - PROD_DB_URI=mongodb://mongodb:27017/voicemed-challenge-prod
-    - PROD_REDIS_URI=redis://redis:6379/2
+      - NODE_ENV=production
+      - PROD_DB_URI=mongodb://mongodb:27017/voicemed-challenge-prod
+      - PROD_REDIS_URI=redis://redis:6379/2
 
 networks:
   default:
