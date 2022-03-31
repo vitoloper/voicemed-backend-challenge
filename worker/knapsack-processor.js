@@ -8,6 +8,7 @@
 // Module dependencies
 const mongoose = require('mongoose');
 const Game = require('../models/game.model');
+const BestValueResult = require('../models/best-value-result.model');
 const { computeKnapsackTable, getBestItems } = require('./knapsack-utils');
 
 // Configuration
@@ -63,9 +64,6 @@ module.exports = async (job) => {
     // Read all games
     const items = await Game.find().lean();
 
-    // Close connection to database
-    await mongoose.disconnect();
-
     // Use scaled integers: convert price in cents
     for (let i = 0; i < items.length; i++) {
         items[i].price = Math.round(items[i].price * 100);
@@ -100,15 +98,24 @@ module.exports = async (job) => {
         bestItems[i].price = bestItems[i].price / 100;
     }
 
-    /**
-     * Final result
-     * @const {object}
-     * */
-    const result = {
+    // Create a new document
+    const bestValueResult = new BestValueResult({
         games: bestItems,
         total_space: totalSpace,
         remaining_space: remainingSpace
-    }
+    });
+
+    // Write results on database
+    const saveResult = await bestValueResult.save();
+
+    // Close connection to database
+    await mongoose.disconnect();
+
+    /**
+     * @const {object}
+     */
+    const result = { id: saveResult._id.toString() };
+    console.log(`Job finished, result saved with object id ${saveResult._id.toString()}`);
 
     return result;
 };
