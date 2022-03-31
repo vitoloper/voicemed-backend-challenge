@@ -14,8 +14,8 @@ services:
       - redis
     environment:
       - NODE_ENV=test
-      - PROD_DB_URI=mongodb://mongodb:27017/voicemed-challenge-test
-      - PROD_REDIS_URI=redis://redis:6379/3
+      - TEST_DB_URI=mongodb://mongodb:27017/voicemed-challenge-test
+      - TEST_REDIS_URI=redis://redis:6379/3
   app_test:
     build:
       context: .
@@ -27,9 +27,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=test
-      - PROD_DB_URI=mongodb://mongodb:27017/voicemed-challenge-test
-      - PROD_REDIS_URI=redis://redis:6379/3
+      - TEST_ENV=test
+      - TEST_DB_URI=mongodb://mongodb:27017/voicemed-challenge-test
+      - TEST_REDIS_URI=redis://redis:6379/3
 
 networks:
   default:
